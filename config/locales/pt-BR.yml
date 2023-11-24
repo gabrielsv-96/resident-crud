@@ -1,0 +1,21 @@
+pt-BR:
+  activerecord:
+    attributes:
+      resident:
+        full_name: "Nome completo"
+        cpf: "CPF"
+        cns: "CNS"
+        email: "E-mail"
+        birth_date: "Data de nascimento"
+        phone: "Telefone"
+        picture: "Foto de perfil"
+        active: "Ativo"
+      address:
+        postal_code: "CEP"
+        public_address: "Logradouro"
+        adjunct: "Complemento"
+        district: "Bairro"
+        city: "Cidade"
+        state_code: "UF"
+        ibge_code: "Código do IBGE"
+        
