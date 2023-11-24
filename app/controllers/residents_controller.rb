@@ -2,7 +2,14 @@ class ResidentsController < ApplicationController
   before_action :set_resident, only: %i[show update edit switch_status]
   
   def index
-    @residents = Resident.includes(:address).all
+    puts '#' * 50
+    puts params
+    puts '#' * 50
+    if params[:active].present?
+      @residents = Resident.includes(:address).where(active: params[:active])
+    else
+      @residents = Resident.includes(:address).all
+    end
   end
   
   def show; end
