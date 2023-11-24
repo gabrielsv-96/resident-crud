@@ -1,0 +1,133 @@
+<div class="container mt-4 mb-4">
+  <div class="row align-items-start">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <legend class="mt-2">Informações do municipe:</legend>
+
+          <ol class="list-group list-group">
+
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Nome completo:</div>
+                <%= @resident.full_name %>
+              </div>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">CPF:</div>
+                <%= CPF.new(@resident.cpf).formatted %>
+              </div>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">CNS:</div>
+                <%= @resident.cns %>
+              </div>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">E-mail:</div>
+                <%= @resident.email %>
+              </div>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Data de nascimento:</div>
+                <%= @resident.birth_date.strftime("%d/%m/%Y") %>
+              </div>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Telefone:</div>
+                <%= @resident.phone %>
+              </div>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Foto de perfil:</div>
+                <%= image_tag(@resident.picture, class: "img-thumbnail", style: "max-height: 300px; max-width: 300px;") %>
+              </div>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Status do municipe:</div>
+                <% if @resident.active == true %>
+                  <span class="badge text-bg-success">Ativo</span>
+                <% else %>
+                  <span class="badge text-bg-danger">Inativo</span>
+                <% end %>
+              </div>
+            </li>
+          </ol>
+
+          <legend class="mt-2">Endereço do municipe:</legend>
+
+          <ol class="list-group list-group">
+
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">CEP:</div>
+                <%= "#{@resident.address.postal_code.first(5)}-#{@resident.address.postal_code.last(3)}" %>
+              </div>
+            </li>
+            
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Endereço:</div>
+                <%= @resident.address.public_address %>
+              </div>
+            </li>
+            
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Complemento:</div>
+                <%= @resident.address.adjunct %>
+              </div>
+            </li>
+            
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Bairro:</div>
+                <%= @resident.address.district %>
+              </div>
+            </li>
+            
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Cidade:</div>
+                <%= @resident.address.city %>
+              </div>
+            </li>
+            
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Estado:</div>
+                <%= @resident.address.state_code %>
+              </div>
+            </li>
+            
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Código do IBGE:</div>
+                  <%= @resident.address.ibge_code %>
+              </div>
+            </li>
+
+          </ol>
+
+          <%= link_to "Voltar", residents_path, class: "btn btn-info mt-4" %>
+          <%= link_to "Editar municipe", edit_resident_path(@resident.id), class: "btn btn-warning mt-4" %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
