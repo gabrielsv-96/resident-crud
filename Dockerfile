@@ -10,6 +10,7 @@ RUN bundle install
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
+COPY . /resident
 EXPOSE 3000
 
 # Configure the main process to run when running the image
