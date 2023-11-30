@@ -24,3 +24,8 @@ que será usado no projeto, para isso, estando no diretório do projeto, basta i
 ### Iniciar e acessar projeto
 Com a build devidamente finalizada, o projeto já pode ser iniciado, para isso, basta inserir o seguinte comando `docker compose up`, e, após isso, é possivel navegar até o projeto no navegador
 através do endereço *localhost*, ou, em caso do projeto estar rodando em subsistemas como o *wsl*, ele pode ser acessado através do IP do *wsl* e da porta 3000.
+
+### Testes
+O projeto conta com uma quantidade de testes escritos em RSPEC visando cobrir os casos de uso do mesmo, para executar os testes, basta acessar o container que está executando o projeto em um novo terminal,
+isso é possível através do comando `docker exec -it resident-crud-web-1 /bin/bash` e então, após ter acesso ao *bash* do container, executar o comando `rspec`.
+
