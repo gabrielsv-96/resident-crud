@@ -19,6 +19,9 @@ gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 gem 'cpf_cnpj', '~> 0.5.0'
 gem 'rails-i18n', '~> 5.1'
 gem 'kaminari', '~> 1.2', '>= 1.2.2'
+gem 'faker', '~> 2.22'
+gem 'railties', '~> 5.0', '>= 5.0.0.1'
+gem 'bootstrap5-kaminari-views'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
