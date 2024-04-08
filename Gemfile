@@ -18,6 +18,7 @@ gem 'jquery-rails', '~> 4.6'
 gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 gem 'cpf_cnpj', '~> 0.5.0'
 gem 'rails-i18n', '~> 5.1'
+gem 'kaminari', '~> 1.2', '>= 1.2.2'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

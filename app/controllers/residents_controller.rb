@@ -3,9 +3,9 @@ class ResidentsController < ApplicationController
   
   def index
     if params[:active].present?
-      @residents = Resident.includes(:address).where(active: params[:active])
+      @residents = Resident.includes(:address).where(active: params[:active]).page(params[:page])
     else
-      @residents = Resident.includes(:address).all
+      @residents = Resident.includes(:address).page(params[:page])
     end
   end
   
@@ -47,7 +47,7 @@ class ResidentsController < ApplicationController
   def resident_params
     params.require(:resident)
     .permit(
-      :full_name, :cpf, :cns, :email, :birth_date, :phone, :picture, :active,
+      :full_name, :cpf, :cns, :email, :birth_date, :phone, :picture, :active, :page,
       address_attributes: %i[id postal_code public_address adjunct district city state_code ibge_code]
     )
   end
