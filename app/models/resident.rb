@@ -5,7 +5,7 @@ class Resident < ApplicationRecord
   has_one_attached :picture
   accepts_nested_attributes_for :address
 
-  validates :full_name, :cpf, :cns, :email, :birth_date, :phone, presence: true
+  validates :full_name, :cpf, :email, :birth_date, :phone, presence: true
   validate :valid_cpf?, :valid_cns?, :valid_date?
 
   def valid_cpf?
@@ -13,7 +13,9 @@ class Resident < ApplicationRecord
   end
 
   def valid_cns?
-    errors.add(:cns, 'inválido') unless CnsHelper.validate(cns) 
+    if cns.present?
+      errors.add(:cns, 'inválido') unless CnsHelper.validate(cns) 
+    end
   end
 
   def valid_date?
