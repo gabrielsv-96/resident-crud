@@ -24,7 +24,13 @@ class ResidentsController < ApplicationController
     @resident = Resident.new(resident_params)
 
     if @resident.save
-      ResidentMailer.with(resident: @resident).creation_mail.deliver_now
+
+      begin
+        ResidentMailer.with(resident: @resident).creation_mail.deliver_now
+      rescue StandardError => error
+        logger.error error
+      end
+      
       redirect_to @resident
     else
       render :new
@@ -33,7 +39,13 @@ class ResidentsController < ApplicationController
   
   def update
     if @resident.update(resident_params)
-      ResidentMailer.with(resident: @resident).update_mail.deliver_now
+
+      begin
+        ResidentMailer.with(resident: @resident).update_mail.deliver_now
+      rescue StandardError => error
+        logger.error error
+      end
+      
       redirect_to residents_path
     else
       redirect_to action: :edit
