@@ -23,4 +23,18 @@ class Resident < ApplicationRecord
       errors.add(:birth_date, 'invalida') if birth_date > Date.today
     end
   end
+
+  def self.search(search_term)
+    if search_term
+      self.joins(:address).where(
+        "full_name ILIKE :search OR
+         district ILIKE :search OR
+         city ILIKE :search OR
+         phone::text LIKE :search",
+         search: "%#{search_term}%"
+      )
+    else
+      self.all
+    end
+  end
 end

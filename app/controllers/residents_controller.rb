@@ -2,11 +2,15 @@ class ResidentsController < ApplicationController
   before_action :set_resident, only: %i[show update edit switch_status]
   
   def index
-    if params[:active].present?
-      @residents = Resident.includes(:address).where(active: params[:active]).page(params[:page])
-    else
-      @residents = Resident.includes(:address).page(params[:page])
+    @residents = Resident.includes(:address)
+
+    if params[:search_term].present?
+      @residents = @residents.search(params[:search_term])
+    elsif params[:active].present?
+      @residents = @residents.where(active: params[:active])
     end
+
+    @residents = @residents.page(params[:page])
   end
   
   def show; end
@@ -47,7 +51,7 @@ class ResidentsController < ApplicationController
   def resident_params
     params.require(:resident)
     .permit(
-      :full_name, :cpf, :cns, :email, :birth_date, :phone, :picture, :active, :page,
+      :full_name, :cpf, :cns, :email, :birth_date, :phone, :picture, :active, :page, :search_term,
       address_attributes: %i[id postal_code public_address adjunct district city state_code ibge_code]
     )
   end
