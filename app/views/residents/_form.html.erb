@@ -1,116 +1,109 @@
 <div class="container mt-4 mb-4">
-  <div class="row align-items-start">
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-
-          <% if @resident.errors.any? %>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-              <% @resident.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-              <% end %>
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-          <% end %>
-
-          <%= form_for @resident, html: { class: "row g-3" } do |resident_form| %>
-            <legend>Informações do municipe:</legend>
-
-            <div class="col-md-6">
-              <label for="resident_full_name" class="form-label">Nome completo:</label>
-              <%= resident_form.text_field :full_name, id: "resident_full_name", class: "form-control" %>
-            </div>
-
-            <div class="col-md-6">
-              <label for="resident_cpf" class="form-label">CPF:</label>
-              <%= resident_form.text_field :cpf, placeholder: "Ex: 000.000.000-00", id: "resident_cpf", class: "form-control" %>
-            </div>
-
-            <div class="col-md-6">
-              <label for="resident_cns" class="form-label">CNS:</label>
-              <%= resident_form.text_field :cns, id: "resident_cns", class: "form-control" %>
-            </div>
-
-            <div class="col-md-6">
-              <label for="resident_email" class="form-label">E-mail:</label>
-              <%= resident_form.email_field :email, id: "resident_cpf", class: "form-control" %>
-            </div>
-
-            <div class="col-md-6">
-              <label for="resident_birth_date" class="form-label">Data de nascimento:</label>
-              <%= resident_form.date_field :birth_date, id: "resident_birth_date", class: "form-control" %>
-            </div>
-
-            <div class="col-md-6">
-              <label for="resident_phone" class="form-label">Telefone:</label>
-              <%= resident_form.text_field :phone, placeholder: "Ex: (DDD) 00000-0000", id: "resident_phone", class: "form-control" %>
-            </div>
-
-            <div class="col-12">
-              <label for="resident_phone" class="form-label">Foto de perfil:</label>
-              <%= resident_form.file_field :picture, id: "resident_picture", value: @resident.picture, class: "form-control" %>
-            </div>
-
-            <div class="col-12">
-              <% if @resident.picture.attached? %>
-                <%= image_tag(@resident.picture, class: "img-thumbnail", style: "max-height: 300px; max-width: 300px;") %>
-              <% end %>
-            </div>
-
-            <div class="col-2">
-              <label for="resident_active" class="form-label">Municipe ativo:</label>
-              <%= resident_form.check_box :active, id: "resident_active", class: "form-check-input", role: "switch" %>
-            </div>
-
-            <legend>Endereço do municipe:</legend>
-
-              <%= resident_form.fields_for :address do |address_form| %>
-
-                <div class="col-12">
-                  <label for="resident_public_address" class="form-label">Logradouro:</label>
-                  <%= address_form.text_field :public_address, id: "resident_public_address", class: "form-control" %>
-                </div>
-
-                <div class="col-3">
-                  <label for="resident_postal_code" class="form-label">CEP:</label>
-                  <%= address_form.text_field :postal_code, id: "resident_postal_code", class: "form-control" %>
-                </div>
-
-                <div class="col-3">
-                  <label for="resident_district" class="form-label">Bairro:</label>
-                  <%= address_form.text_field :district, id: "resident_district", class: "form-control" %>
-                </div>
-
-                <div class="col-3">
-                  <label for="resident_city" class="form-label">Cidade:</label>
-                  <%= address_form.text_field :city, id: "resident_city", class: "form-control" %>
-                </div>
-
-                <div class="col-3">
-                  <label for="resident_state_code" class="form-label">UF:</label>
-                  <%= address_form.text_field :state_code, id: "resident_state_code", class: "form-control" %>
-                </div>
-
-                <div class="col-8">
-                  <label for="resident_adjunct" class="form-label">Complemento:</label>
-                  <%= address_form.text_field :adjunct, id: "resident_adjunct", class: "form-control" %>
-                </div>
-
-                <div class="col-4">
-                  <label for="resident_ibge_code" class="form-label">Código IBGE do município:</label>
-                  <%= address_form.text_field :ibge_code, id: "resident_ibge_code", class: "form-control" %>
-                </div>
-
-              <% end %>
-
-              <div class="col-4 submit">
-                <%= resident_form.submit request.path.include?('new') ? "Criar Municipe" : "Editar Municipe", class: "btn btn-success" %>
-                <%= link_to "Cancelar", residents_path, class: "btn btn-danger" %>
-              </div>
-
-          <% end %>
-        </div>
+  <div class="col card card-body">
+    <% if @resident.errors.any? %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <% @resident.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
-    </div>
+    <% end %>
+
+    <%= form_for @resident, html: { class: "row g-3" } do |resident_form| %>
+      <legend>Informações do municipe:</legend>
+
+      <div class="col-md-6">
+        <label for="resident_full_name" class="form-label">Nome completo:</label>
+        <%= resident_form.text_field :full_name, id: "resident_full_name", class: "form-control" %>
+      </div>
+
+      <div class="col-md-6">
+        <label for="resident_cpf" class="form-label">CPF:</label>
+        <%= resident_form.text_field :cpf, placeholder: "Ex: 000.000.000-00", id: "resident_cpf", class: "form-control" %>
+      </div>
+
+      <div class="col-md-6">
+        <label for="resident_cns" class="form-label">CNS:</label>
+        <%= resident_form.text_field :cns, id: "resident_cns", class: "form-control" %>
+      </div>
+
+      <div class="col-md-6">
+        <label for="resident_email" class="form-label">E-mail:</label>
+        <%= resident_form.email_field :email, id: "resident_cpf", class: "form-control" %>
+      </div>
+
+      <div class="col-md-6">
+        <label for="resident_birth_date" class="form-label">Data de nascimento:</label>
+        <%= resident_form.date_field :birth_date, id: "resident_birth_date", class: "form-control" %>
+      </div>
+
+      <div class="col-md-6">
+        <label for="resident_phone" class="form-label">Telefone:</label>
+        <%= resident_form.text_field :phone, placeholder: "Ex: (DDD) 00000-0000", id: "resident_phone", class: "form-control" %>
+      </div>
+
+      <div class="col-12">
+        <label for="resident_phone" class="form-label">Foto de perfil:</label>
+        <%= resident_form.file_field :picture, id: "resident_picture", value: @resident.picture, class: "form-control" %>
+      </div>
+
+      <div class="col-12">
+        <% if @resident.picture.attached? %>
+          <%= image_tag(@resident.picture, class: "img-thumbnail", style: "max-height: 300px; max-width: 300px;") %>
+        <% end %>
+      </div>
+
+      <div class="col-2">
+        <label for="resident_active" class="form-label">Municipe ativo:</label>
+        <%= resident_form.check_box :active, id: "resident_active", class: "form-check-input", role: "switch" %>
+      </div>
+
+      <legend>Endereço do municipe:</legend>
+
+        <%= resident_form.fields_for :address do |address_form| %>
+
+          <div class="col-12">
+            <label for="resident_public_address" class="form-label">Logradouro:</label>
+            <%= address_form.text_field :public_address, id: "resident_public_address", class: "form-control" %>
+          </div>
+
+          <div class="col-3">
+            <label for="resident_postal_code" class="form-label">CEP:</label>
+            <%= address_form.text_field :postal_code, id: "resident_postal_code", class: "form-control" %>
+          </div>
+
+          <div class="col-3">
+            <label for="resident_district" class="form-label">Bairro:</label>
+            <%= address_form.text_field :district, id: "resident_district", class: "form-control" %>
+          </div>
+
+          <div class="col-3">
+            <label for="resident_city" class="form-label">Cidade:</label>
+            <%= address_form.text_field :city, id: "resident_city", class: "form-control" %>
+          </div>
+
+          <div class="col-3">
+            <label for="resident_state_code" class="form-label">UF:</label>
+            <%= address_form.text_field :state_code, id: "resident_state_code", class: "form-control" %>
+          </div>
+
+          <div class="col-8">
+            <label for="resident_adjunct" class="form-label">Complemento:</label>
+            <%= address_form.text_field :adjunct, id: "resident_adjunct", class: "form-control" %>
+          </div>
+
+          <div class="col-4">
+            <label for="resident_ibge_code" class="form-label">Código IBGE do município:</label>
+            <%= address_form.text_field :ibge_code, id: "resident_ibge_code", class: "form-control" %>
+          </div>
+
+        <% end %>
+
+        <div class="col-4 submit">
+          <%= resident_form.submit request.path.include?('new') ? "Criar Municipe" : "Editar Municipe", class: "btn btn-success" %>
+          <%= link_to "Cancelar", residents_path, class: "btn btn-danger" %>
+        </div>
+
+    <% end %>
   </div>
 </div>
