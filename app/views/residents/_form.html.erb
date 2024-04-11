@@ -100,7 +100,7 @@
         <% end %>
 
         <div class="col-4 submit">
-          <%= resident_form.submit request.path.include?('new') ? "Criar Municipe" : "Editar Municipe", class: "btn btn-success" %>
+          <%= resident_form.submit request.path.include?('edit') ? "Editar Municipe" : "Criar Municipe", class: "btn btn-success" %>
           <%= link_to "Cancelar", residents_path, class: "btn btn-danger" %>
         </div>
 
