@@ -1,5 +1,25 @@
 pt-BR:
   views:
+    index:
+      tags:
+        options: "Opções"
+        active: "Ativo"
+        inactive: "Inativo"
+      buttons:
+        new: "Novo Municipe"
+        all: "Todos"
+        active_only: "Ativos"
+        inactive_only: "Inativos"
+        search: "Buscar"
+        edit: "Editar"
+        show: "Visualizar"
+    form:
+      tags:
+        legend: "Informações do municipe"
+      buttons:
+        edit: "Editar Municipe"
+        create: "Criar Municipe"
+        cancel: "Cancelar"
     pagination:
       first: "&laquo; Início"
       last: "Fim &raquo;"
@@ -25,7 +45,7 @@ pt-BR:
         birth_date: "Data de nascimento"
         phone: "Telefone"
         picture: "Foto de perfil"
-        active: "Ativo"
+        active: "Municipe ativo"
       address:
         postal_code: "CEP"
         public_address: "Logradouro"

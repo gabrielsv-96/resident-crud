@@ -10,40 +10,54 @@
     <% end %>
 
     <%= form_for @resident, html: { class: "row g-3" } do |resident_form| %>
-      <legend>Informações do municipe:</legend>
+      <legend><%= t('views.form.legend') %></legend>
 
       <div class="col-md-6">
-        <label for="resident_full_name" class="form-label">Nome completo:</label>
+        <label for="resident_full_name" class="form-label">
+          <%= t('activerecord.attributes.resident.full_name') %>
+        </label>
         <%= resident_form.text_field :full_name, id: "resident_full_name", class: "form-control" %>
       </div>
 
       <div class="col-md-6">
-        <label for="resident_cpf" class="form-label">CPF:</label>
+        <label for="resident_cpf" class="form-label">
+          <%= t('activerecord.attributes.resident.cpf') %>
+        </label>
         <%= resident_form.text_field :cpf, placeholder: "Ex: 000.000.000-00", id: "resident_cpf", class: "form-control" %>
       </div>
 
       <div class="col-md-6">
-        <label for="resident_cns" class="form-label">CNS:</label>
+        <label for="resident_cns" class="form-label">
+          <%= t('activerecord.attributes.resident.cns') %>
+        </label>
         <%= resident_form.text_field :cns, id: "resident_cns", class: "form-control" %>
       </div>
 
       <div class="col-md-6">
-        <label for="resident_email" class="form-label">E-mail:</label>
+        <label for="resident_email" class="form-label">
+          <%= t('activerecord.attributes.resident.email') %>
+        </label>
         <%= resident_form.email_field :email, id: "resident_cpf", class: "form-control" %>
       </div>
 
       <div class="col-md-6">
-        <label for="resident_birth_date" class="form-label">Data de nascimento:</label>
+        <label for="resident_birth_date" class="form-label">
+          <%= t('activerecord.attributes.resident.birth_date') %>
+        </label>
         <%= resident_form.date_field :birth_date, id: "resident_birth_date", class: "form-control" %>
       </div>
 
       <div class="col-md-6">
-        <label for="resident_phone" class="form-label">Telefone:</label>
+        <label for="resident_phone" class="form-label">
+          <%= t('activerecord.attributes.resident.phone') %>
+        </label>
         <%= resident_form.text_field :phone, placeholder: "Ex: (DDD) 00000-0000", id: "resident_phone", class: "form-control" %>
       </div>
 
       <div class="col-12">
-        <label for="resident_phone" class="form-label">Foto de perfil:</label>
+        <label for="resident_phone" class="form-label">
+          <%= t('activerecord.attributes.resident.picture') %>
+        </label>
         <%= resident_form.file_field :picture, id: "resident_picture", value: @resident.picture, class: "form-control" %>
       </div>
 
@@ -54,7 +68,9 @@
       </div>
 
       <div class="col-2">
-        <label for="resident_active" class="form-label">Municipe ativo:</label>
+        <label for="resident_active" class="form-label">
+          <%= t('activerecord.attributes.resident.active') %>
+        </label>
         <%= resident_form.check_box :active, id: "resident_active", class: "form-check-input", role: "switch" %>
       </div>
 
@@ -63,45 +79,59 @@
         <%= resident_form.fields_for :address do |address_form| %>
 
           <div class="col-12">
-            <label for="resident_public_address" class="form-label">Logradouro:</label>
+            <label for="resident_public_address" class="form-label">
+              <%= t('activerecord.attributes.address.public_address') %>
+            </label>
             <%= address_form.text_field :public_address, id: "resident_public_address", class: "form-control" %>
           </div>
 
           <div class="col-3">
-            <label for="resident_postal_code" class="form-label">CEP:</label>
+            <label for="resident_postal_code" class="form-label">
+              <%= t('activerecord.attributes.address.postal_code') %>
+            </label>
             <%= address_form.text_field :postal_code, id: "resident_postal_code", class: "form-control" %>
           </div>
 
           <div class="col-3">
-            <label for="resident_district" class="form-label">Bairro:</label>
+            <label for="resident_district" class="form-label">
+              <%= t('activerecord.attributes.address.district') %>
+            </label>
             <%= address_form.text_field :district, id: "resident_district", class: "form-control" %>
           </div>
 
           <div class="col-3">
-            <label for="resident_city" class="form-label">Cidade:</label>
+            <label for="resident_city" class="form-label">
+              <%= t('activerecord.attributes.address.city') %>
+            </label>
             <%= address_form.text_field :city, id: "resident_city", class: "form-control" %>
           </div>
 
           <div class="col-3">
-            <label for="resident_state_code" class="form-label">UF:</label>
+            <label for="resident_state_code" class="form-label">
+              <%= t('activerecord.attributes.address.state_code') %>
+            </label>
             <%= address_form.text_field :state_code, id: "resident_state_code", class: "form-control" %>
           </div>
 
           <div class="col-8">
-            <label for="resident_adjunct" class="form-label">Complemento:</label>
+            <label for="resident_adjunct" class="form-label">
+              <%= t('activerecord.attributes.address.adjunct') %>
+            </label>
             <%= address_form.text_field :adjunct, id: "resident_adjunct", class: "form-control" %>
           </div>
 
           <div class="col-4">
-            <label for="resident_ibge_code" class="form-label">Código IBGE do município:</label>
+            <label for="resident_ibge_code" class="form-label">
+              <%= t('activerecord.attributes.address.ibge_code') %>
+            </label>
             <%= address_form.text_field :ibge_code, id: "resident_ibge_code", class: "form-control" %>
           </div>
 
         <% end %>
 
         <div class="col-4 submit">
-          <%= resident_form.submit request.path.include?('edit') ? "Editar Municipe" : "Criar Municipe", class: "btn btn-success" %>
-          <%= link_to "Cancelar", residents_path, class: "btn btn-danger" %>
+          <%= resident_form.submit request.path.include?('edit') ? t('views.form.buttons.edit') : t('views.form.buttons.create'), class: "btn btn-success" %>
+          <%= link_to t('views.form.buttons.cancel'), residents_path, class: "btn btn-danger" %>
         </div>
 
     <% end %>

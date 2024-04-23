@@ -2,12 +2,12 @@
   <div class="col card card-body">
     <div class="row">
       <div class="col">
-        <%= link_to "Novo municipe", new_resident_path, class: "btn btn-primary" %>
+        <%= link_to t('views.index.buttons.new'), new_resident_path, class: "btn btn-primary" %>
 
         <div class="btn-group" role="group">
-          <%= link_to "Todos", residents_path, :method => :get, class: "btn btn-primary" %>
-          <%= link_to "Ativos", residents_path(:active => true), :method => :get, class: "btn btn-primary" %>
-          <%= link_to "Inativos", residents_path(:active => false), :method => :get, class: "btn btn-primary" %>
+          <%= link_to t('views.index.buttons.all'), residents_path, :method => :get, class: "btn btn-primary" %>
+          <%= link_to t('views.index.buttons.active_only'), residents_path(:active => true), :method => :get, class: "btn btn-primary" %>
+          <%= link_to t('views.index.buttons.inactive_only'), residents_path(:active => false), :method => :get, class: "btn btn-primary" %>
         </div>
       </div>
 
@@ -17,7 +17,7 @@
             <%= text_field_tag :search_term, params[:search_term], class: "form-control", placeholder: "Buscar residente" %>
           </div>
           <div class="col-auto">
-            <%= submit_tag "Buscar", class: "btn btn-primary mb-3" %>
+            <%= submit_tag t('views.index.buttons.search'), class: "btn btn-primary mb-3" %>
           </div>
         <% end %>  
         
@@ -27,36 +27,68 @@
     <table class="table table-striped mt-2">
       <thead class="table-dark">
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">Nome completo</th>
-          <th scope="col">Telefone</th>
-          <th scope="col">Bairro</th>
-          <th scope="col">Cidade</th>
-          <th scope="col">UF</th>
-          <th scope="col">Status</th>
-          <th scope="col">Opções</th>
+          <th scope="col">
+            #
+          </th>
+          <th scope="col">
+            <%= t('activerecord.attributes.resident.full_name') %>
+          </th>
+          <th scope="col">
+            <%= t('activerecord.attributes.resident.phone') %>
+          </th>
+          <th scope="col">
+            <%= t('activerecord.attributes.address.district') %>
+          </th>
+          <th scope="col">
+            <%= t('activerecord.attributes.address.city') %>
+          </th>
+          <th scope="col">
+            <%= t('activerecord.attributes.address.state_code') %>
+          </th>
+          <th scope="col">
+            Status
+          </th>
+          <th scope="col">
+            <%= t('views.index.tags.options') %>
+          </th>
         </tr>
       </thead>
       <tbody>
         <% @residents.each do |resident| %>
         <% address = resident.address %>
         <tr>
-          <td scope="row"><%= resident.id %></td>
-          <td><%= resident.full_name %></td>
-          <td><%= resident.phone %></td>
-          <td><%= address.district %></td>
-          <td><%= address.city %></td>
-          <td><%= address.state_code %></td>
+          <td scope="row">
+            <%= resident.id %>
+          </td>
+          <td>
+            <%= resident.full_name %>
+          </td>
+          <td>
+            <%= resident.phone %>
+          </td>
+          <td>
+            <%= address.district %>
+          </td>
+          <td>
+            <%= address.city %>
+          </td>
+          <td>
+            <%= address.state_code %>
+          </td>
           <td>
             <% if resident.active == true %>
-              <span class="badge text-bg-success">Ativo</span>
+              <span class="badge text-bg-success">
+                <%= t('views.index.tags.active') %>
+              </span>
             <% else %>
-              <span class="badge text-bg-danger">Inativo</span>
+              <span class="badge text-bg-danger">
+                <%= t('views.index.tags.inactive') %>
+              </span>
             <% end %>
           </td>
           <td>
-            <%= link_to "Editar", edit_resident_path(resident.id), class: "btn btn-warning" %>
-            <%= link_to "Visualizar", resident_path(resident.id), class: "btn btn-info" %>
+            <%= link_to t('views.index.buttons.edit'), edit_resident_path(resident.id), class: "btn btn-warning" %>
+            <%= link_to t('views.index.buttons.show'), resident_path(resident.id), class: "btn btn-info" %>
           </td>
         </tr>
         <% end %>
