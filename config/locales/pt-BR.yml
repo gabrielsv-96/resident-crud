@@ -1,4 +1,6 @@
 pt-BR:
+  english: "Inglês"
+  portuguese: "Português"
   views:
     index:
       tags:
@@ -15,7 +17,8 @@ pt-BR:
         show: "Visualizar"
     form:
       tags:
-        legend: "Informações do municipe"
+        resident_legend: "Informações do municipe"
+        address_legend: "Endereço do municipe"
       buttons:
         edit: "Editar Municipe"
         create: "Criar Municipe"

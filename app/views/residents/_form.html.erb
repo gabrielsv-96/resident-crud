@@ -10,7 +10,7 @@
     <% end %>
 
     <%= form_for @resident, html: { class: "row g-3" } do |resident_form| %>
-      <legend><%= t('views.form.legend') %></legend>
+      <legend><%= t('views.form.tags.resident_legend') %></legend>
 
       <div class="col-md-6">
         <label for="resident_full_name" class="form-label">
@@ -74,7 +74,7 @@
         <%= resident_form.check_box :active, id: "resident_active", class: "form-check-input", role: "switch" %>
       </div>
 
-      <legend>Endereço do municipe:</legend>
+      <legend><%= t('views.form.tags.address_legend') %></legend>
 
         <%= resident_form.fields_for :address do |address_form| %>
 
