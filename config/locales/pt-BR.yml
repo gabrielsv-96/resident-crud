@@ -2,14 +2,14 @@ pt-BR:
   english: "Inglês"
   portuguese: "Português"
   resident:
-    full_name: "Nome completo"
+    full_name: "Nome Completo"
     cpf: "CPF"
     cns: "CNS"
     email: "E-mail"
-    birth_date: "Data de nascimento"
+    birth_date: "Data de Nascimento"
     phone: "Telefone"
-    picture: "Foto de perfil"
-    active: "Municipe ativo"
+    picture: "Foto de Perfil"
+    active: "Municipe Ativo"
   address:
     postal_code: "CEP"
     public_address: "Logradouro"
@@ -20,7 +20,10 @@ pt-BR:
     ibge_code: "Código do IBGE"
   residents:
     index:
+      placeholders:
+        search: "Buscar Municipe"
       labels:
+        languages: "Idiomas"
         options: "Opções"
         active: "Ativo"
         inactive: "Inativo"
@@ -32,10 +35,20 @@ pt-BR:
         search: "Buscar"
         edit: "Editar"
         show: "Visualizar"
+    show:
+      labels:
+        resident_legend: "Informações do Municipe"
+        address_legend: "Endereço do Municipe"
+        active: "Ativo"
+        inactive: "Inativo"
+        status: "Status do Municipe"
+      buttons:
+        edit: "Editar Municipe"
+        back: "Voltar"
     form:
       labels:
-        resident_legend: "Informações do municipe"
-        address_legend: "Endereço do municipe"
+        resident_legend: "Informações do Municipe"
+        address_legend: "Endereço do Municipe"
       buttons:
         edit: "Editar Municipe"
         create: "Criar Municipe"
@@ -59,14 +72,14 @@ pt-BR:
   activerecord:
     attributes:
       resident:
-        full_name: "Nome completo"
+        full_name: "Nome Completo"
         cpf: "CPF"
         cns: "CNS"
         email: "E-mail"
-        birth_date: "Data de nascimento"
+        birth_date: "Data de Nascimento"
         phone: "Telefone"
-        picture: "Foto de perfil"
-        active: "Municipe ativo"
+        picture: "Foto de Perfil"
+        active: "Municipe Ativo"
       address:
         postal_code: "CEP"
         public_address: "Logradouro"

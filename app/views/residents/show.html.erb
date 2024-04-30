@@ -3,20 +3,24 @@
     <div class="col">
       <div class="card">
         <div class="card-body">
-          <legend class="mt-2">Informações do municipe:</legend>
+          <legend class="mt-2"><%= t('.labels.resident_legend') + ':' %></legend>
 
           <ol class="list-group list-group">
 
             <li class="list-group-item d-flex justify-content-between align-items-start">
               <div class="ms-2 me-auto">
-                <div class="fw-bold">Nome completo:</div>
+                <div class="fw-bold">
+                  <%= t('resident.full_name') + ':' %>
+                </div>
                 <%= @resident.full_name %>
               </div>
             </li>
 
             <li class="list-group-item d-flex justify-content-between align-items-start">
               <div class="ms-2 me-auto">
-                <div class="fw-bold">CPF:</div>
+                <div class="fw-bold">
+                  <%= t('resident.cpf') + ':' %>
+                </div>
                 <%= CPF.new(@resident.cpf).formatted %>
               </div>
             </li>
@@ -24,7 +28,9 @@
             <% if @resident.cns.present? %>
               <li class="list-group-item d-flex justify-content-between align-items-start">
                 <div class="ms-2 me-auto">
-                  <div class="fw-bold">CNS:</div>
+                  <div class="fw-bold">
+                    <%= t('resident.cns') + ':' %>
+                  </div>
                   <%= @resident.cns %>
                 </div>
               </li>
@@ -32,21 +38,27 @@
 
             <li class="list-group-item d-flex justify-content-between align-items-start">
               <div class="ms-2 me-auto">
-                <div class="fw-bold">E-mail:</div>
+                <div class="fw-bold">
+                  <%= t('resident.email') + ':' %>
+                </div>
                 <%= @resident.email %>
               </div>
             </li>
 
             <li class="list-group-item d-flex justify-content-between align-items-start">
               <div class="ms-2 me-auto">
-                <div class="fw-bold">Data de nascimento:</div>
+                <div class="fw-bold">
+                  <%= t('resident.birth_date') + ':' %>
+                </div>
                 <%= @resident.birth_date.strftime("%d/%m/%Y") %>
               </div>
             </li>
 
             <li class="list-group-item d-flex justify-content-between align-items-start">
               <div class="ms-2 me-auto">
-                <div class="fw-bold">Telefone:</div>
+                <div class="fw-bold">
+                  <%= t('resident.phone') + ':' %>
+                </div>
                 <%= @resident.phone %>
               </div>
             </li>
@@ -54,7 +66,9 @@
             <% if @resident.picture.attached? %>
               <li class="list-group-item d-flex justify-content-between align-items-start">
                 <div class="ms-2 me-auto">
-                  <div class="fw-bold">Foto de perfil:</div>
+                  <div class="fw-bold">
+                    <%= t('resident.picture') + ':' %>
+                  </div>
                   <%= image_tag(@resident.picture, class: "img-thumbnail", style: "max-height: 300px; max-width: 300px;") %>
                 </div>
               </li>
@@ -62,30 +76,40 @@
 
             <li class="list-group-item d-flex justify-content-between align-items-start">
               <div class="ms-2 me-auto">
-                <div class="fw-bold">Status do municipe:</div>
+                <div class="fw-bold">
+                  <%= t('.labels.status') + ':' %>
+                </div>
                 <% if @resident.active == true %>
-                  <span class="badge text-bg-success">Ativo</span>
+                  <span class="badge text-bg-success">
+                    <%= t('.labels.active') %>
+                  </span>
                 <% else %>
-                  <span class="badge text-bg-danger">Inativo</span>
+                  <span class="badge text-bg-danger">
+                    <%= t('.labels.inactive') %>
+                  </span>
                 <% end %>
               </div>
             </li>
           </ol>
 
-          <legend class="mt-2">Endereço do municipe:</legend>
+          <legend class="mt-2"><%= t('.labels.address_legend') + ':' %></legend>
 
           <ol class="list-group list-group">
 
             <li class="list-group-item d-flex justify-content-between align-items-start">
               <div class="ms-2 me-auto">
-                <div class="fw-bold">CEP:</div>
+                <div class="fw-bold">
+                  <%= t('address.postal_code') + ':' %>
+                </div>
                 <%= "#{@resident.address.postal_code.first(5)}-#{@resident.address.postal_code.last(3)}" %>
               </div>
             </li>
             
             <li class="list-group-item d-flex justify-content-between align-items-start">
               <div class="ms-2 me-auto">
-                <div class="fw-bold">Endereço:</div>
+                <div class="fw-bold">
+                  <%= t('address.public_address') + ':' %>
+                </div>
                 <%= @resident.address.public_address %>
               </div>
             </li>
@@ -93,7 +117,9 @@
             <% if @resident.address.adjunct.present? %>
               <li class="list-group-item d-flex justify-content-between align-items-start">
                 <div class="ms-2 me-auto">
-                  <div class="fw-bold">Complemento:</div>
+                  <div class="fw-bold">
+                    <%= t('address.adjunct') + ':' %>
+                  </div>
                   <%= @resident.address.adjunct %>
                 </div>
               </li>
@@ -102,7 +128,9 @@
             <% if @resident.address.district.present? %>
               <li class="list-group-item d-flex justify-content-between align-items-start">
                 <div class="ms-2 me-auto">
-                  <div class="fw-bold">Bairro:</div>
+                  <div class="fw-bold">
+                    <%= t('address.district') + ':' %>
+                  </div>
                   <%= @resident.address.district %>
                 </div>
               </li>
@@ -110,14 +138,18 @@
             
             <li class="list-group-item d-flex justify-content-between align-items-start">
               <div class="ms-2 me-auto">
-                <div class="fw-bold">Cidade:</div>
+                <div class="fw-bold">
+                  <%= t('address.city') + ':' %>
+                </div>
                 <%= @resident.address.city %>
               </div>
             </li>
             
             <li class="list-group-item d-flex justify-content-between align-items-start">
               <div class="ms-2 me-auto">
-                <div class="fw-bold">Estado:</div>
+                <div class="fw-bold">
+                  <%= t('address.state_code') + ':' %>
+                </div>
                 <%= @resident.address.state_code %>
               </div>
             </li>
@@ -125,16 +157,18 @@
             <% if @resident.address.ibge_code.present? %>
               <li class="list-group-item d-flex justify-content-between align-items-start">
                 <div class="ms-2 me-auto">
-                  <div class="fw-bold">Código do IBGE:</div>
-                    <%= @resident.address.ibge_code %>
+                  <div class="fw-bold">
+                    <%= t('address.ibge_code') + ':' %>
+                  </div>
+                  <%= @resident.address.ibge_code %>
                 </div>
               </li>
             <% end %>
 
           </ol>
 
-          <%= link_to "Voltar", residents_path, class: "btn btn-info mt-4" %>
-          <%= link_to "Editar municipe", edit_resident_path(@resident.id), class: "btn btn-warning mt-4" %>
+          <%= link_to t('.buttons.back'), residents_path, class: "btn btn-info mt-4" %>
+          <%= link_to t('.buttons.edit'), edit_resident_path(@resident.id), class: "btn btn-warning mt-4" %>
 
         </div>
       </div>

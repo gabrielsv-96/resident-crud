@@ -10,16 +10,21 @@
           <%= link_to t('.buttons.inactive_only'), residents_path(:active => false), :method => :get, class: "btn btn-info" %>
         </div>
 
-        <div class="btn-group btn-group" role="group">
-          <%= link_to t('english'), url_for(locale: :en), class: "btn btn-secondary" %>
-          <%= link_to t('portuguese'), url_for(locale: :'pt-BR'), class: "btn btn-secondary" %>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= t('.labels.languages') %>
+          </button>
+          <ul class="dropdown-menu">
+            <li><%= link_to t('english'), url_for(locale: :en), class: "dropdown-item" %></li>
+            <li><%= link_to t('portuguese'), url_for(locale: :'pt-BR'), class: "dropdown-item" %></li>
+          </ul>    
         </div>
       </div>
 
       <div class="col">
         <%= form_tag residents_path, method: :get, class: "row g-3" do %>
           <div class="col">
-            <%= text_field_tag :search_term, params[:search_term], class: "form-control", placeholder: "Buscar residente" %>
+            <%= text_field_tag :search_term, params[:search_term], class: "form-control", placeholder: t('.placeholders.search') %>
           </div>
           <div class="col-auto">
             <%= submit_tag t('.buttons.search'), class: "btn btn-primary mb-3" %>
