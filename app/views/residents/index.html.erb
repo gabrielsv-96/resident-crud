@@ -2,12 +2,12 @@
   <div class="col card card-body">
     <div class="row">
       <div class="col">
-        <%= link_to t('views.index.buttons.new'), new_resident_path, class: "btn btn-primary" %>
+        <%= link_to t('.buttons.new'), new_resident_path, class: "btn btn-primary" %>
 
         <div class="btn-group" role="group">
-          <%= link_to t('views.index.buttons.all'), residents_path, :method => :get, class: "btn btn-info" %>
-          <%= link_to t('views.index.buttons.active_only'), residents_path(:active => true), :method => :get, class: "btn btn-info" %>
-          <%= link_to t('views.index.buttons.inactive_only'), residents_path(:active => false), :method => :get, class: "btn btn-info" %>
+          <%= link_to t('.buttons.all'), residents_path, :method => :get, class: "btn btn-info" %>
+          <%= link_to t('.buttons.active_only'), residents_path(:active => true), :method => :get, class: "btn btn-info" %>
+          <%= link_to t('.buttons.inactive_only'), residents_path(:active => false), :method => :get, class: "btn btn-info" %>
         </div>
 
         <div class="btn-group btn-group" role="group">
@@ -22,7 +22,7 @@
             <%= text_field_tag :search_term, params[:search_term], class: "form-control", placeholder: "Buscar residente" %>
           </div>
           <div class="col-auto">
-            <%= submit_tag t('views.index.buttons.search'), class: "btn btn-primary mb-3" %>
+            <%= submit_tag t('.buttons.search'), class: "btn btn-primary mb-3" %>
           </div>
         <% end %>  
       </div>
@@ -35,25 +35,25 @@
             #
           </th>
           <th scope="col">
-            <%= t('activerecord.attributes.resident.full_name') %>
+            <%= t('resident.full_name') %>
           </th>
           <th scope="col">
-            <%= t('activerecord.attributes.resident.phone') %>
+            <%= t('resident.phone') %>
           </th>
           <th scope="col">
-            <%= t('activerecord.attributes.address.district') %>
+            <%= t('address.district') %>
           </th>
           <th scope="col">
-            <%= t('activerecord.attributes.address.city') %>
+            <%= t('address.city') %>
           </th>
           <th scope="col">
-            <%= t('activerecord.attributes.address.state_code') %>
+            <%= t('address.state_code') %>
           </th>
           <th scope="col">
             Status
           </th>
           <th scope="col">
-            <%= t('views.index.tags.options') %>
+            <%= t('.labels.options') %>
           </th>
         </tr>
       </thead>
@@ -82,17 +82,17 @@
           <td>
             <% if resident.active == true %>
               <span class="badge text-bg-success">
-                <%= t('views.index.tags.active') %>
+                <%= t('.labels.active') %>
               </span>
             <% else %>
               <span class="badge text-bg-danger">
-                <%= t('views.index.tags.inactive') %>
+                <%= t('.labels.inactive') %>
               </span>
             <% end %>
           </td>
           <td>
-            <%= link_to t('views.index.buttons.edit'), edit_resident_path(resident.id), class: "btn btn-warning" %>
-            <%= link_to t('views.index.buttons.show'), resident_path(resident.id), class: "btn btn-info" %>
+            <%= link_to t('.buttons.edit'), edit_resident_path(resident.id), class: "btn btn-warning" %>
+            <%= link_to t('.buttons.show'), resident_path(resident.id), class: "btn btn-info" %>
           </td>
         </tr>
         <% end %>
