@@ -9,7 +9,7 @@ pt-BR:
     birth_date: "Data de Nascimento"
     phone: "Telefone"
     picture: "Foto de Perfil"
-    active: "Municipe Ativo"
+    active: "Munícipe Ativo"
   address:
     postal_code: "CEP"
     public_address: "Logradouro"
@@ -21,14 +21,14 @@ pt-BR:
   residents:
     index:
       placeholders:
-        search: "Buscar Municipe"
+        search: "Buscar Munícipe"
       labels:
         languages: "Idiomas"
         options: "Opções"
         active: "Ativo"
         inactive: "Inativo"
       buttons:
-        new: "Novo Municipe"
+        new: "Novo Munícipe"
         all: "Todos"
         active_only: "Ativos"
         inactive_only: "Inativos"
@@ -37,21 +37,21 @@ pt-BR:
         show: "Visualizar"
     show:
       labels:
-        resident_legend: "Informações do Municipe"
-        address_legend: "Endereço do Municipe"
+        resident_legend: "Informações do Munícipe"
+        address_legend: "Endereço do Munícipe"
         active: "Ativo"
         inactive: "Inativo"
-        status: "Status do Municipe"
+        status: "Status do Munícipe"
       buttons:
-        edit: "Editar Municipe"
+        edit: "Editar Munícipe"
         back: "Voltar"
     form:
       labels:
-        resident_legend: "Informações do Municipe"
-        address_legend: "Endereço do Municipe"
+        resident_legend: "Informações do Munícipe"
+        address_legend: "Endereço do Munícipe"
       buttons:
-        edit: "Editar Municipe"
-        create: "Criar Municipe"
+        edit: "Editar Munícipe"
+        create: "Criar Munícipe"
         cancel: "Cancelar"
   views:
     pagination:
@@ -79,7 +79,7 @@ pt-BR:
         birth_date: "Data de Nascimento"
         phone: "Telefone"
         picture: "Foto de Perfil"
-        active: "Municipe Ativo"
+        active: "Munícipe Ativo"
       address:
         postal_code: "CEP"
         public_address: "Logradouro"
